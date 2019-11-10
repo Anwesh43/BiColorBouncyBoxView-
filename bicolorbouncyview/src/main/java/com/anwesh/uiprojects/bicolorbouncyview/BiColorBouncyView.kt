@@ -196,4 +196,26 @@ class BiColorBouncyView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiColorBouncyView) {
+
+        private val animator : Animator = Animator(view)
+        private val bcb : BiColorBouncyBox = BiColorBouncyBox(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            bcb.draw(canvas, paint)
+            animator.animate {
+                bcb.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bcb.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
