@@ -65,3 +65,21 @@ fun Canvas.drawBCBNode(i : Int, scale : Float, paint : Paint) {
     drawDoneText(size, scale.divideScale(1, 2), paint)
     restore()
 }
+
+class BiColorBouncyView(ctx : Context) : View(ctx) {
+
+    private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
